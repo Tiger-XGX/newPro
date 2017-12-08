@@ -53,7 +53,8 @@ export default {
   },
   methods: {
     getimgs() {
-      this.$http.get("http://vue.studyit.io/api/getlunbo").then(function(response) {
+      var url = this.Common.apidomain+ "/api/getlunbo";
+      this.$http.get(url).then(function(response) {
         var data = response.body;
         if (data.status != 0) {
           Toast(data.message);
@@ -72,6 +73,7 @@ export default {
 }
 .mint-swipe-item img {
   width: 100%;
+  height: 214px;
 }
 .mint-swipe-item {
   background-color: #fff;

@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     news() {
-      this.$http.get("http://vue.studyit.io/api/getnewslist").then(res => {
+      var url=this.Common.apidomain+"/api/getnewslist";
+      this.$http.get(url).then(res => {
         if (res.body.status != 0) {
           alert("获取数据失败");
           return;

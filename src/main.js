@@ -12,26 +12,32 @@ import car from "./components/shopcar/car.vue";
 import newlist from "./components/news/newlist.vue";
 import newsinfo from "./components/news/newsinfo.vue";
 import vueResource from "vue-resource";
-import moment from "moment";
 Vue.use(vueResource);
+import moment from "moment";
+import common from "./common/common";
+Vue.prototype.Common = common;
 var router = new VueRouter({
     linkActiveClass: "mui-active",
-    routes: [{
-        path: "/home",
-        component: Home
-    },
-    {
-        path: "/shopcar",
-        component: car
-    },
-    {
-        path: "/news/newlist",
-        component: newlist
-    },
-    {
-        path: "/news/newsinfo/:name",
-        component: newsinfo
-    }
+    routes: [
+        {
+            path: "/", redirect: "/home"
+        },
+        {
+            path: "/home",
+            component: Home
+        },
+        {
+            path: "/shopcar",
+            component: car
+        },
+        {
+            path: "/news/newlist",
+            component: newlist
+        },
+        {
+            path: "/news/newsinfo/:name",
+            component: newsinfo
+        }
     ]
 });
 Vue.filter("datafmt", function (input) {
