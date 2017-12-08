@@ -10,6 +10,7 @@ import "../statics/css/site.css";
 import Home from "./components/Home.vue";
 import car from "./components/shopcar/car.vue";
 import newlist from "./components/news/newlist.vue";
+import newsinfo from "./components/news/newsinfo.vue";
 import vueResource from "vue-resource";
 import moment from "moment";
 Vue.use(vueResource);
@@ -26,6 +27,10 @@ var router = new VueRouter({
     {
         path: "/news/newlist",
         component: newlist
+    },
+    {
+        path: "/news/newsinfo/:name",
+        component: newsinfo
     }
     ]
 });
