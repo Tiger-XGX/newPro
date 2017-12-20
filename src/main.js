@@ -11,8 +11,16 @@ import Home from "./components/Home.vue";
 import car from "./components/shopcar/car.vue";
 import newlist from "./components/news/newlist.vue";
 import newsinfo from "./components/news/newsinfo.vue";
+import detailphoto from "./components/photo/detailphoto.vue"
+import photolist from "./components/photo/photolist.vue";
+import goodslist from "./components/goods/goodslist.vue";
+import goodsinfo from "./components/goods/goodsinfo.vue";
+import detailgoods from "./components/goods/detailgoods.vue";
+import commentgoods from "./components/goods/commentgoods.vue";
 import vueResource from "vue-resource";
 Vue.use(vueResource);
+import vuePicturePreview from 'vue-picture-preview';
+Vue.use(vuePicturePreview);
 import moment from "moment";
 import common from "./common/common";
 Vue.prototype.Common = common;
@@ -37,6 +45,30 @@ var router = new VueRouter({
         {
             path: "/news/newsinfo/:name",
             component: newsinfo
+        },
+        {
+            path: "/photo/photolist",
+            component: photolist
+        },
+        {
+            path: "/photo/photolist/detailphoto/:id",
+            component: detailphoto
+        },
+        {
+            path: "/goods/goodslist",
+            component: goodslist
+        },
+        {
+            path: "/goods/goodslist/goodsinfo/:id",
+            component: goodsinfo
+        },
+        {
+            path: "/goods/goodslist/goodsinfo/:id/detailgoods",
+            component: detailgoods
+        },
+        {
+            path: "/goods/goodslist/goodsinfo/:id/commentgoods",
+            component: commentgoods
         }
     ]
 });

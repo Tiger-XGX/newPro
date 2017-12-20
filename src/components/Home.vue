@@ -1,10 +1,6 @@
 <template>
 	<div id="top">
-		 <mt-swipe :auto="2000">
-		   <mt-swipe-item v-for="(item,index) in lists" :key="index">
-		   	<img :src="item.img">
-		   </mt-swipe-item>
-		</mt-swipe>
+    <slider :id="id"></slider>
 		<div class="mui-content">
 		        <ul class="mui-table-view mui-grid-view mui-grid-9">
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -42,45 +38,21 @@
 
 <script>
 import { Toast } from "mint-ui";
+import slider from "./subcom/slider.vue";
 export default {
   data() {
     return {
-      lists: []
+      lists: [],
+      id:"/api/getlunbo"
     };
   },
-  created() {
-    this.getimgs();
-  },
-  methods: {
-    getimgs() {
-      var url = this.Common.apidomain+ "/api/getlunbo";
-      this.$http.get(url).then(function(response) {
-        var data = response.body;
-        if (data.status != 0) {
-          Toast(data.message);
-          return;
-        }
-        this.lists = data.message;
-      });
-    }
+  components:{
+    slider
   }
 };
 </script>
 
 <style scoped>
-.mint-swipe {
-  height: 214px;
-}
-.mint-swipe-item img {
-  width: 100%;
-  height: 214px;
-}
-.mint-swipe-item {
-  background-color: #fff;
-  width: 100%;
-  height: 100%;
-}
-
 .mui-content,
 .mui-content ul {
   background-color: #fff;

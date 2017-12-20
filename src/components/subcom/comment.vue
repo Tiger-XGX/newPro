@@ -1,27 +1,27 @@
 <template>
-    <div class="cmt">
-        <h4>提交评论</h4>
+  <div class="cmt">
+    <h4>提交评论</h4>
+    <p class="p"></p>
+    <textarea placeholder="请输入评论内容..." v-model="msg"></textarea>
+    <mt-button type="primary" size="large" @click="sub">提交评论</mt-button>
+    <div class="comment">
+      <div class="com-top">
+        <h4>评论内容</h4>
         <p class="p"></p>
-        <textarea placeholder="请输入评论内容..." v-model="msg"></textarea>
-        <mt-button type="primary" size="large" @click="sub">提交评论</mt-button>
-        <div class="comment">
-            <div class="com-top">
-                <h4>评论内容</h4>
-                <p class="p"></p>
-            </div>
-            <div v-for="(list,index) in lists" :key="index">
-                <div class="com-bottom">
-                    <span>用户:{{list.user_name}}</span>
-                    <span>发表时间:{{list.add_time | datafmt}}</span>
-                    <span>第{{index+1}}楼</span>
-                </div>
-                <ul class="mui-table-view">
-                    <li class="mui-table-view-cell" v-text="list.content"></li>
-                </ul>
-            </div>
-            <mt-button size="large" type="danger" plain @click="getmore">点击加载更多</mt-button>
+      </div>
+      <div v-for="(list,index) in lists" :key="index">
+        <div class="com-bottom">
+          <span>用户:{{list.user_name}}</span>
+          <span>发表时间:{{list.add_time | datafmt}}</span>
+          <span>第{{index+1}}楼</span>
         </div>
+        <ul class="mui-table-view">
+          <li class="mui-table-view-cell" v-text="list.content"></li>
+        </ul>
+      </div>
+      <mt-button size="large" type="danger" plain @click="getmore">点击加载更多</mt-button>
     </div>
+  </div>
 </template>
 
 <script>
@@ -51,7 +51,7 @@ export default {
           Toast(res.body.message);
         });
       this.msg = "";
-      this.loadMsg();
+     setTimeout(this.loadMsg(),200)
     },
     loadMsg() {
       var url =
